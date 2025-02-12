@@ -32,7 +32,7 @@ function Quiz() {
     return (
         <div id="quiz">
         <div id="question">
-            <Timer timeout={30000} onTimeOut={handleSkipAnswer}/>
+            <Timer key={activeQuestionIndex} timeout={30000} onTimeOut={handleSkipAnswer}/>
             <h2>{QUESTIONS[activeQuestionIndex].text}</h2>
             <ul id="answers">
             {shuffledAnswers.map((answer) => (
