@@ -6,12 +6,16 @@ function Timer({timeout, onTimeOut}) {
         const timer = setTimeout(() => {
             onTimeOut()
         }, timeout);
+
+        return () => clearTimeout(timer)
     }, [timeout, onTimeOut])
     
     useEffect(() => {
-        setInterval(() => {
+        const interval = setInterval(() => {
             setTimeLeft(prevTime => prevTime - 100)
         }, 100);
+
+        return () => clearInterval(interval)
     }, [])
     
 
