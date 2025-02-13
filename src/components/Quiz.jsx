@@ -1,6 +1,5 @@
 import { useCallback, useState } from 'react'
 import QUESTIONS from '../questions'
-import quizCompleteImage from '../assets/quiz-complete.png'
 import Question from './Question'
 import Summary from './Summary';
 
