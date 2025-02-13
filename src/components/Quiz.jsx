@@ -47,32 +47,32 @@ function Quiz() {
 
     return (
         <div id="quiz">
-        <div id="question">
-            <Timer key={activeQuestionIndex} timeout={30000} onTimeOut={handleSkipAnswer}/>
-            <h2>{QUESTIONS[activeQuestionIndex].text}</h2>
-            <ul id="answers">
-            {shuffledAnswers.current.map((answer) => {
-                const isSelected = userAnswers[userAnswers.length -1] === answer
-                let buttonClass = ''
+            <div id="question">
+                <Timer key={activeQuestionIndex} timeout={30000} onTimeOut={handleSkipAnswer}/>
+                <h2>{QUESTIONS[activeQuestionIndex].text}</h2>
+                <ul id="answers">
+                {shuffledAnswers.current.map((answer) => {
+                    const isSelected = userAnswers[userAnswers.length -1] === answer
+                    let buttonClass = ''
 
-                if (answerState === 'answered' && isSelected) {
-                    buttonClass = 'selected'
-                }
-                
-                if ((answerState === 'correct' || answerState === 'correct')  && isSelected) {
-                    buttonClass = answerState
-                }
+                    if (answerState === 'answered' && isSelected) {
+                        buttonClass = ' selected'
+                    }
+                    
+                    if ((answerState === 'correct' || answerState === 'wrong')  && isSelected) {
+                        buttonClass = answerState
+                    }
 
-                return (
-                    <li key={answer} className="answer">
-                    <button onClick={() => handleSelectAnswer(answer)} className={buttonClass}>
-                        {answer}
-                    </button>
-                    </li>
-                )
-            })}
-            </ul>
-        </div>
+                    return (
+                        <li key={answer} className="answer">
+                        <button onClick={() => handleSelectAnswer(answer)} className={buttonClass}>
+                            {answer}
+                        </button>
+                        </li>
+                    )
+                })}
+                </ul>
+            </div>
         </div>
     );
 }
