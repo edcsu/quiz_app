@@ -37,6 +37,10 @@ function Question({ questionIndex, onSelectAnswer, onSkipAnswer }) {
         }, 1000);
     }
 
+    function doNothing() {
+        
+    }
+
     let answerState = ''
     if (answer.selectedAnswer && answer.isCorrect !== null) {
         answerState = answer.isCorrect ? 'correct' : 'wrong'
@@ -49,7 +53,7 @@ function Question({ questionIndex, onSelectAnswer, onSkipAnswer }) {
         <Timer 
             key={timer}
             timeout={timer} 
-            onTimeOut={answer.selectedAnswer === '' ? onSkipAnswer : null} 
+            onTimeOut={answer.selectedAnswer === '' ? onSkipAnswer : doNothing} 
             mode={answerState}
         />
         <h2>{QUESTIONS[questionIndex].text}</h2>
