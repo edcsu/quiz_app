@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-function Timer({timeout, onTimeOut}) {
+function Timer({timeout, onTimeOut, mode}) {
     const [timeLeft, setTimeLeft] = useState(timeout)
     
     useEffect(() => {
@@ -20,7 +20,7 @@ function Timer({timeout, onTimeOut}) {
     
 
     return (
-        <progress id="question-time" value={timeLeft} max={timeout} />
+        <progress id="question-time" value={timeLeft} max={timeout} className={mode} />
     )
 }
 
