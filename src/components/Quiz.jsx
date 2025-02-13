@@ -3,6 +3,7 @@ import QUESTIONS from '../questions'
 import quizCompleteImage from '../assets/quiz-complete.png'
 import Timer from './Timer'
 import Answers from './Answers'
+import Question from './Question'
 
 function Quiz() {
     const [userAnswers, setUserAnswers] = useState([]);
@@ -43,17 +44,15 @@ function Quiz() {
 
     return (
         <div id="quiz">
-            <div id="question">
-                <Timer key={activeQuestionIndex} timeout={30000} onTimeOut={handleSkipAnswer}/>
-                <h2>{QUESTIONS[activeQuestionIndex].text}</h2>
-                <Answers
-                    key={activeQuestionIndex}
-                    answers={QUESTIONS[activeQuestionIndex].answers}
-                    selectedAnswer={userAnswers[userAnswers.length -1]} 
-                    answerState={answerState}
-                    onSelect={handleSelectAnswer}
-                />
-            </div>
+            <Question
+                key={activeQuestionIndex}
+                answerState={answerState}
+                questionText={QUESTIONS[activeQuestionIndex].text}
+                answers={QUESTIONS[activeQuestionIndex].answers}
+                onSelectAnswer={handleSelectAnswer}
+                onSkipAnswer={handleSkipAnswer}
+                selectedAnswer={userAnswers[userAnswers.length -1]} 
+            />
         </div>
     );
 }
